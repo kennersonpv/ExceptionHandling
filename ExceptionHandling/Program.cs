@@ -9,14 +9,12 @@ namespace ExceptionHandling
         {
             try
             {
-                using (var streamReader = new StreamReader(@"c:\"))
-                {
-                    var content = streamReader.ReadToEnd();
-                }
+                var api = new YoutubeApi();
+                var videos = api.GetVideos("kennerson");
             }
             catch (Exception e)
             {
-                Console.WriteLine("Unexpected error");
+                Console.WriteLine(e.Message);
             }
         }
     }

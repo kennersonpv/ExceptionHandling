@@ -7,20 +7,16 @@ namespace ExceptionHandling
     {
         static void Main(string[] args)
         {
-            StreamReader streamReader = null;
             try
             {
-                streamReader = new StreamReader(@"c:\");
-                var content = streamReader.ReadToEnd();
+                using (var streamReader = new StreamReader(@"c:\"))
+                {
+                    var content = streamReader.ReadToEnd();
+                }
             }
             catch (Exception e)
             {
                 Console.WriteLine("Unexpected error");
-            }
-            finally
-            {
-                if(streamReader != null)
-                    streamReader.Dispose();
             }
         }
     }

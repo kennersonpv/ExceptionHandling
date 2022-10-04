@@ -7,9 +7,10 @@ namespace ExceptionHandling
     {
         static void Main(string[] args)
         {
-            var streamReader = new StreamReader(@"c:\");
+            StreamReader streamReader = null;
             try
             {
+                streamReader = new StreamReader(@"c:\");
                 var content = streamReader.ReadToEnd();
             }
             catch (Exception e)
@@ -18,7 +19,8 @@ namespace ExceptionHandling
             }
             finally
             {
-                streamReader.Dispose();
+                if(streamReader != null)
+                    streamReader.Dispose();
             }
         }
     }
